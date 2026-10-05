@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hotel Surya | Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #fffaf2;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 7%;
+      background: rgba(20, 20, 20, 0.95);
+    }
+
+    .logo {
+      color: #f7c843;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #f7c843;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 40px;
+
+      background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 750px;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 8vw, 80px);
+      color: #f7c843;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: clamp(25px, 5vw, 42px);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 6px;
+      border-radius: 30px;
+      background: #f7c843;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    /* GENERAL */
+    section {
+      padding: 80px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: #a52818;
+    }
+
+    .section-title p {
+      color: #666;
+      margin-top: 10px;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .about-text h2 {
+      font-size: 38px;
+      color: #a52818;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    /* MENU */
+    .menu {
+      background: #fff;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .food-card {
+      background: #fffaf2;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      transition: .3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.15);
+    }
+
+    .food-card h3 {
+      color: #a52818;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      display: block;
+      margin-top: 15px;
+      color: #b8860b;
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    /* OFFER */
+    .offer {
+      text-align: center;
+      background: #a52818;
+      color: white;
+    }
+
+    .offer h2 {
+      font-size: 40px;
+      color: #f7c843;
+      margin-bottom: 15px;
+    }
+
+    .offer p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .feature {
+      padding: 25px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    }
+
+    .feature .icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .feature h3 {
+      color: #a52818;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #222;
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: #f7c843;
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      margin: 8px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #111;
+      color: #aaa;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        gap: 10px;
+      }
+
+      nav ul li:nth-child(n+4) {
+        display: none;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">☀ HOTEL SURYA</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>Hotel Surya</h1>
+
+      <h2>Good Food. Great Moments.</h2>
+
+      <p>
+        Experience delicious food, warm hospitality and memorable
+        moments at Hotel Surya.
+      </p>
+
+      <a href="#menu" class="btn">Explore Our Menu</a>
+
+      <a href="#contact" class="btn btn-outline">
+        Contact Us
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="about">
+
+      <img
+        src="https://images.unsplash.com/photo-1552566626-52f8b828add9"
+        alt="Hotel Surya Restaurant">
+
+      <div class="about-text">
+
+        <h2>Welcome to Hotel Surya</h2>
+
+        <p>
+          At Hotel Surya, we believe that great food brings people
+          together. Our restaurant offers delicious meals prepared
+          with quality ingredients and served with care.
+        </p>
+
+        <p>
+          Whether you're enjoying a family dinner, meeting friends,
+          celebrating a special occasion or having a business meal,
+          Hotel Surya is ready to welcome you.
+        </p>
+
+        <a href="#contact" class="btn">
+          Plan Your Visit
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MENU -->
+  <section class="menu" id="menu">
+
+    <div class="section-title">
+
+      <h2>Our Popular Menu</h2>
+
+      <p>
+        Delicious choices for every taste
+      </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+      <div class="food-card">
+        <h3>🍛 Special Thali</h3>
+        <p>
+          A complete and satisfying traditional meal
+          prepared with fresh ingredients.
+        </p>
+        <span class="price">₹299</span>
+      </div>
+
+
+      <div class="food-card">
+        <h3>🍗 Chicken Special</h3>
+        <p>
+          Deliciously cooked chicken with our special
+          restaurant spices.
+        </p>
+        <span class="price">₹299</span>
+      </div>
+
+
+      <div class="food-card">
+        <h3>🍕 Veg Special</h3>
+        <p>
+          A tasty vegetarian selection made for food lovers.
+        </p>
+        <span class="price">₹249</span>
+      </div>
+
+
+      <div class="food-card">
+        <h3>🍚 Biryani</h3>
+        <p>
+          Aromatic rice, fresh ingredients and rich
+          traditional flavours.
+        </p>
+        <span class="price">₹249</span>
+      </div>
+
+
+      <div class="food-card">
+        <h3>🥗 Fresh Salad</h3>
+        <p>
+          Fresh and healthy ingredients for a lighter choice.
+        </p>
+        <span class="price">₹99</span>
+      </div>
+
+
+      <div class="food-card">
+        <h3>🍨 Special Dessert</h3>
+        <p>
+          Finish your meal with something delicious and sweet.
+        </p>
+        <span class="price">₹129</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SPECIAL OFFER -->
+  <section class="offer">
+
+    <h2>🎉 Special Offer</h2>
+
+    <p>
+      Bring your family & friends and enjoy a memorable
+      dining experience at Hotel Surya!
+    </p>
+
+    <a href="#contact" class="btn">
+      Reserve Your Table
+    </a>
+
+  </section>
+
+
+  <!-- FEATURES -->
+  <section>
+
+    <div class="section-title">
+
+      <h2>Why Choose Hotel Surya?</h2>
+
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="icon">🍽️</div>
+        <h3>Delicious Food</h3>
+        <p>Freshly prepared meals with great taste.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">⭐</div>
+        <h3>Great Service</h3>
+        <p>Friendly hospitality for every guest.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">👨‍👩‍👧‍👦</div>
+        <h3>Family Friendly</h3>
+        <p>A comfortable place for families and friends.</p>
+      </div>
+
+      <div class="feature">
+        <div class="icon">💰</div>
+        <h3>Great Value</h3>
+        <p>Quality food at prices you'll love.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <h2>Visit Hotel Surya</h2>
+
+    <p>📍 Sathe Chowk, Chhtrapati Sambhaji Nagar, Maharashtra</p>
+
+    <p>📞 +91 XXXXX XXXXX</p>
+
+    <p>🕐 Open Daily: 11:00 AM – 11:00 PM</p>
+
+    <br>
+
+    <a
+      href="tel:+91XXXXXXXXXX"
+      class="btn"
+    >
+      📞 Call Now
+    </a>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <p>
+      © 2026 Hotel Surya. All Rights Reserved.
+    </p>
+
+    <p>
+      Good Food • Great Moments • Warm Hospitality
+    </p>
+
+  </footer>
+
+</body>
+</html>
